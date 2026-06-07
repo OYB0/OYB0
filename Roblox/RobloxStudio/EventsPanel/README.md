@@ -31,7 +31,7 @@ To allow the system to save data and function correctly:
 ### 4. Client Script Setup 💻
 *   Create a new **LocalScript** inside the `OYB_Assets` folder.
 *   Rename it **EXACTLY** to: `OYB_PlayerClient`.
-*   Paste the official client script code (found in our community links or video description) inside this script.
+*   Get the `OYB_PlayerClient` script code from [this GitHub link](https://github.com/OYB0/OYB0/blob/main/Roblox/RobloxStudio/EventsPanel/OYB_PlayerClient.lua) and paste it inside your new LocalScript.
 
 ### 5. Final Step: Auto-Setup 🎉
 *   Simply press **"Play"**! 

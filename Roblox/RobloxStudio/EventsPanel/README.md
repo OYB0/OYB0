@@ -1,33 +1,60 @@
-# 🛡️ OYB Admin & Global Events System
+# 🛡️ OYB Admin & Global Events System (V2)
 
-Thank you for checking out the OYB Events System! This system provides a secure, cross-server admin panel and global events for your Roblox games.
+Welcome to the updated OYB Events System! This system has been revamped to include a **Smart Auto-Setup** feature, making installation faster and more secure.
 
 ## 🔗 Resources
 
-* 📦 **Get the Model:** [OYB Events Panel on Roblox](https://create.roblox.com/store/asset/89740483068098/OYB-Events-Panel)
-* 🎥 **Video Tutorial:** [Watch the Setup Guide on YouTube](https://youtu.be/Zx0taEAkBBM) *(Highly recommended to avoid errors)*
+* 📦 **Get the Model:** [OYB Events Panel on Roblox](https://create.roblox.com/store/asset/71640449795118/MainModule-of-OYB-Panel)
+* 🎥 **Video Tutorial:** [Watch the Updated Setup Guide](https://youtu.be/Zx0taEAkBBM)
 
-## 🛠️ Quick Installation Guide
+---
 
-To make the system work perfectly, unpack the downloaded model and place each item in its designated location within the **Explorer**:
+## 🛠️ Installation Guide (New Method)
 
-1.  **ReplicatedStorage:** Place `OYB_AdminEvent` and `OYB_ClientEvent` (RemoteEvents).
-2.  **ServerScriptService:** Place the `OYB_Brain` script.
-    * *⚠️ Important:* Open this script and change `ROOT_OWNER_ID` to your own Roblox UserID!
-3.  **ServerStorage:** Place the `OYB_Panel` (ScreenGui).
-    * *Note:* The system clones this to admins only when they join to keep it secure from exploiters.
-4.  **StarterPlayer > StarterPlayerScripts:** Place the `OYB_PlayerClient` (LocalScript).
+Follow these steps to set up the system. The new version handles file distribution automatically!
 
-## ⚙️ Security Requirements
+### 1. API Access & Security ⚙️
+To allow the system to save data and function correctly:
+*   Open **Game Settings** in Roblox Studio.
+*   Go to the **Security** tab.
+*   Enable **"Allow Studio Access to API Services"** and click **Save**.
 
-For the Admin List to save your progress correctly using DataStores, you must enable these settings:
-1. Open **Game Settings** in Roblox Studio.
-2. Go to the **Security** tab.
-3. Enable **"Allow HTTP Requests"** and **"Enable Studio Access to API Services"**.
+### 2. Owner Configuration 🔑
+*   Locate the `Settings` script inside the main project folder.
+*   Replace the placeholder ID with your **Roblox User ID** to gain full access.
+
+### 3. Avatar Setup (Global Events) 🎭
+*   Use the **AlreadyPro** plugin to load your avatar.
+*   Rename the spawned character model **EXACTLY** to: `OYB_DivineDummy`.
+*   Move this model into: `OYB_Assets` -> `OYBEVENT`.
+
+### 4. Client Script Setup 💻
+*   Create a new **LocalScript** inside the `OYB_Assets` folder.
+*   Rename it **EXACTLY** to: `OYB_PlayerClient`.
+*   Paste the official client script code (found in our community links or video description) inside this script.
+
+### 5. Final Step: Auto-Setup 🎉
+*   Simply press **"Play"**! 
+*   The system will automatically detect all components and move them to their correct locations (ReplicatedStorage, ServerScriptService, etc.).
+
+---
+
+## ⚙️ Requirements
+*   **HTTP Requests:** Must be enabled if you are using external webhooks.
+*   **API Services:** Required for the Admin List and DataStores.
+
+---
 
 ## 📜 Copyright & Terms of Use
 
 Created by **OYB**.
 
-* ✅ **Allowed:** Using this script in your own games and modifying it for personal use.
-* ❌ **Prohibited:** Publishing, distributing, or re-uploading this script/model (even if modified) to the Roblox Library or any other platform.
+*   ✅ **Allowed:** Using this system in your games and personal modifications.
+*   ❌ **Prohibited:** Re-uploading, distributing, or selling this script/model (modified or not) to the Roblox Library or other platforms.
+
+---
+
+## ✨ Community & Support
+Need help? Join our community or check our latest updates:
+*   **YouTube:** [OYB Channel](https://youtube.com/@OYBOfficial)
+*   **GitHub:** [OYB Projects](https://github.com/oyb0/oyb0)

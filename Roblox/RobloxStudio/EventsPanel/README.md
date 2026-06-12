@@ -4,8 +4,8 @@ Welcome to the updated OYB Events System! This system has been revamped to inclu
 
 ## 🔗 Resources
 
-* 📦 **Get the Model:** [OYB Events Panel on Roblox](https://create.roblox.com/store/asset/71640449795118/MainModule-of-OYB-Panel)
-* 🎥 **Video Tutorial:** [Watch the Updated Setup Guide](https://youtu.be/Zx0taEAkBBM)
+* 📦 **Get the Model:** [OYB Events Panel on Roblox](https://create.roblox.com/store/asset/71640449795118)
+* 🎥 **Video Tutorial:** [Watch the Updated Setup Guide](https://www.youtube.com/watch?v=_YaEtuLHRDg)
 
 ---
 

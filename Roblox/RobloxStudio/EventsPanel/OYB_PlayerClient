@@ -33,7 +33,7 @@ local customThemes = {
 }
 
 local eventsData = {
-	Taco = { musicId = "rbxassetid://93810409296175", animId = "rbxassetid://507776043", emoji = "🌮" },
+	Taco = { musicId = "rbxassetid://142376088", animId = "rbxassetid://507776043", emoji = "🌮" },
 	MemeParty = { musicId = "rbxassetid://76662809515638", animId = "rbxassetid://507777623", emoji = "🧠" },
 	Party = { musicId = "rbxassetid://140245756477343", animId = "rbxassetid://507771019", emoji = "🎉" },
 	Zombie = { musicId = "rbxassetid://138112098699544", animId = nil, emoji = "🧟" },

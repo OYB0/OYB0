@@ -57,14 +57,18 @@ local lEncode, lDecode, lDigest = a3, aw, Z;
 --! CORE FUNCTIONS (REQUESTS & VERIFICATION)
 -------------------------------------------------------------------------------
 
-local useNonce = true -- Hidden from Config to avoid user confusion, but active for security
+local useNonce = true 
 
--- Safe request function for universal executor support
 local function safeRequest(options)
     local req = request or http_request or syn_request or (http and http.request )
     if not req then return nil, "HTTP requests not supported" end
     local success, response = pcall(function() return req(options) end)
-    if success and response then return response else return nil, "Connection Error" end
+    if success and type(response) == "table" then 
+        return response 
+    else 
+       
+        return nil, "Connection Error: " .. tostring(response or "Unknown") 
+    end
 end
 
 local fSetClipboard = setclipboard or toclipboard or function() end
@@ -74,14 +78,17 @@ local fGetHwid = gethwid or function() return game:GetService("RbxAnalyticsServi
 local cachedLink, cachedTime = "", 0
 local host = "https://api.platoboost.com"
 
--- Check server connectivity
 local function checkConnectivity( )
-    local response = safeRequest({Url = host .. "/public/connectivity", Method = "GET"})
+    local response, err = safeRequest({Url = host .. "/public/connectivity", Method = "GET"})
     if not response or (response.StatusCode ~= 200 and response.StatusCode ~= 429) then
         host = "https://api.platoboost.net"
+        local fallbackResponse, fallbackErr = safeRequest({Url = host .. "/public/connectivity", Method = "GET"})
+        if not fallbackResponse then
+            return false 
+        end
     end
+    return true
 end
-checkConnectivity( )
 
 local function generateNonce()
     local str = ""
@@ -89,8 +96,12 @@ local function generateNonce()
     return str
 end
 
--- Get player's key link
 local function cacheLink()
+    local isConnected = checkConnectivity()
+    if not isConnected then
+        return false, "Delta/Network Error! Use VPN or change Executor."
+    end
+    
     if cachedTime + (10*60) < fOsTime() then
         local response, err = safeRequest({
             Url = host .. "/public/start",
@@ -111,7 +122,6 @@ local function cacheLink()
     return true, cachedLink
 end
 
--- Verify key on input
 local function redeemKey(key)
     local nonce = generateNonce()
     local body = {identifier = lDigest(fGetHwid()), key = key}
@@ -150,16 +160,13 @@ local function StartMainScript()
     local player = game:GetService("Players").LocalPlayer
     local pGui = player:WaitForChild("PlayerGui")
     
-    -- Destroy old GUI if it exists
     if pGui:FindFirstChild(Config.OldGuiName) then 
         pGui[Config.OldGuiName]:Destroy() 
         task.wait(0.1)
     end
     
-    -- Set secret global variable to bypass main script protection
     _G[Config.Secret] = true 
     
-    -- Execute main script
     loadstring(game:HttpGet(Config.MainScriptURL))()
 end
 
@@ -186,7 +193,6 @@ local function CreateGUI()
     mainStroke.Thickness = 2;
     mainStroke.Color = Color3.fromRGB(40, 40, 40)
 
-    -- Close Button
     local CloseBtn = Instance.new("TextButton", MainFrame)
     CloseBtn.Size = UDim2.new(0, 30, 0, 30)
     CloseBtn.Position = UDim2.new(1, -35, 0, 10)
@@ -217,7 +223,6 @@ local function CreateGUI()
     PromoText.TextSize = 14
     PromoText.TextWrapped = true
 
-    -- Rainbow Stroke Function
     local function AddRainbowStroke(parent)
         local stroke = Instance.new("UIStroke", parent)
         stroke.Thickness = 2
@@ -230,10 +235,8 @@ local function CreateGUI()
         end)
     end
 
-    -- Dynamic Positioning for elements
     local currentYOffset = 105
 
-    -- Discord Button
     if Config.ShowDiscord then
         local DiscordBtn = Instance.new("TextButton", MainFrame)
         DiscordBtn.Size = UDim2.new(0.85, 0, 0, 35)
@@ -259,7 +262,6 @@ local function CreateGUI()
                 Status.Text = "Discord Link Copied!"
                 Status.TextColor3 = Color3.fromRGB(88, 101, 242)
             end
-            -- Auto-extract invite code from config URL
             local inviteCode = string.match(Config.DiscordURL, "discord%.gg/([%w-]+)")
             if syn and syn.request and inviteCode then
                 syn.request({Url = "http://localhost:1111/discord?invite=" .. inviteCode, Method = "GET"})
@@ -269,7 +271,6 @@ local function CreateGUI()
         currentYOffset = currentYOffset + 45
     end
 
-    -- Instagram Button
     if Config.ShowInstagram then
         local InstaBtn = Instance.new("TextButton", MainFrame)
         InstaBtn.Size = UDim2.new(0.85, 0, 0, 35)
@@ -299,8 +300,7 @@ local function CreateGUI()
         
         currentYOffset = currentYOffset + 45
     end
-
-    -- YouTube Button
+    
     if Config.ShowYoutube then
         local YTBtn = Instance.new("TextButton", MainFrame)
         YTBtn.Size = UDim2.new(0.85, 0, 0, 35)
@@ -331,7 +331,6 @@ local function CreateGUI()
         currentYOffset = currentYOffset + 45
     end
 
-    -- Key Input Box
     local KeyInput = Instance.new("TextBox", MainFrame)
     KeyInput.Size = UDim2.new(0.85, 0, 0, 40)
     KeyInput.Position = UDim2.new(0.075, 0, 0, currentYOffset + 15)
@@ -373,10 +372,8 @@ local function CreateGUI()
     Status.Font = Enum.Font.Gotham;
     Status.TextSize = 12
     
-    -- Dynamically adjust main frame height based on active elements
     MainFrame.Size = UDim2.new(0, 340, 0, currentYOffset + 160)
 
-    -- Logic
     VerifyBtn.MouseButton1Click:Connect(function()
         local key = KeyInput.Text
         if key == "" then Status.Text = "Enter a key!"; return end
@@ -402,11 +399,11 @@ local function CreateGUI()
             Status.Text = "Link Copied!"
             Status.TextColor3 = Color3.fromRGB(0, 170, 255)
         else
-            Status.Text = "Error: " .. tostring(link)
+            Status.Text = tostring(link) 
+            Status.TextColor3 = Color3.fromRGB(255, 100, 100)
         end
     end)
 
-    -- Auto Check Saved Key
     if isfile and isfile(Config.KeyFileName) then
         local savedKey = readfile(Config.KeyFileName)
         if savedKey ~= "" then
@@ -428,14 +425,12 @@ local function CreateGUI()
     end
 end
 
--- Check if main script GUI is already open
 local player = game:GetService("Players").LocalPlayer
 local pGui = player:WaitForChild("PlayerGui")
 
 if pGui:FindFirstChild(Config.MainGuiName) then
-    StartMainScript() -- Run if main script is already active
+    StartMainScript() 
     return
 end
 
--- Initialize Key System GUI
 CreateGUI()

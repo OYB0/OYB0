@@ -1,55 +1,23 @@
 # 🛡️ OYB Admin & Global Events System (V2)
 
-Welcome to the updated OYB Events System! This system has been revamped to include a **Smart Auto-Setup** feature, making installation faster and more secure.
+A comprehensive Roblox Studio administrative panel and global server event controller, featuring smart auto-setup and modular event dispatching.
+
+🌐 **Project Page:** [oybofficial.com/projects/events-panel/](https://oybofficial.com/projects/events-panel/)
+
+---
 
 ## 🔗 Resources
-
-* 📦 **Get the Model:** [OYB Events Panel on Roblox](https://create.roblox.com/store/asset/71640449795118)
-* 🎥 **Video Tutorial:** [Watch the Updated Setup Guide](https://www.youtube.com/watch?v=_YaEtuLHRDg)
-
----
-
-## 🛠️ Installation Guide (New Method)
-
-Follow these steps to set up the system. The new version handles file distribution automatically!
-
-### 1. API Access & Security ⚙️
-To allow the system to save data and function correctly:
-*   Open **Game Settings** in Roblox Studio.
-*   Go to the **Security** tab.
-*   Enable **"Allow Studio Access to API Services"** and click **Save**.
-
-### 2. Owner Configuration 🔑
-*   Locate the `Settings` script inside the main project folder.
-*   Replace the placeholder ID with your **Roblox User ID** to gain full access.
-
-### 3. Avatar Setup (Global Events) 🎭
-*   Use the **AlreadyPro** plugin to load your avatar.
-*   Rename the spawned character model **EXACTLY** to: `OYB_DivineDummy`.
-*   Move this model into: `OYB_Assets` -> `OYBEVENT`.
-
-### 4. Final Step: Auto-Setup 🎉
-*   Simply press **"Play"**! 
-*   The system will automatically detect all components and move them to their correct locations (ReplicatedStorage, ServerScriptService, etc.).
+* 📦 **Roblox Creator Store:** [Get the Events Panel Model](https://create.roblox.com/store/asset/71640449795118)
+* 🎥 **Setup Video:** [Watch the Video Tutorial](https://www.youtube.com/watch?v=_YaEtuLHRDg)
+* 🌐 **Official Website:** [oybofficial.com](https://oybofficial.com/)
 
 ---
 
-## ⚙️ Requirements
-*   **HTTP Requests:** Must be enabled if you are using external webhooks.
-*   **API Services:** Required for the Admin List and DataStores.
+## 🛠️ Installation Guide
+1. **Enable API Access:** Go to **Game Settings** ➡️ **Security** ➡️ Enable **Allow Studio Access to API Services**.
+2. **Owner ID:** Open the `Settings` script and enter your Roblox User ID.
+3. **Avatar Setup:** Use the Load Character AlreadyPro plugin to spawn your avatar, rename it to `OYB_DivineDummy`, and move it to `OYB_Assets/OYBEVENT`.
+4. **Auto-Setup:** Press **Play** in Studio! The system will distribute files automatically to `ServerScriptService` and `ReplicatedStorage`.
 
----
-
-## 📜 Copyright & Terms of Use
-
-Created by **OYB**.
-
-*   ✅ **Allowed:** Using this system in your games and personal modifications.
-*   ❌ **Prohibited:** Re-uploading, distributing, or selling this script/model (modified or not) to the Roblox Library or other platforms.
-
----
-
-## ✨ Community & Support
-Need help? Join our community or check our latest updates:
-*   **YouTube:** [OYB Channel](https://youtube.com/@OYBOfficial)
-*   **GitHub:** [OYB Projects](https://github.com/oyb0/oyb0)
+## 📜 Terms of Use
+Created by **OYB OFFICIAL**. Do not re-upload or sell this model to the Roblox Marketplace.

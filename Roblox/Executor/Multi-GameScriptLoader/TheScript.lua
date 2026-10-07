@@ -1,3 +1,12 @@
+--[[
+    ================================================================
+    [ OYB OFFICIAL | ROBLOX DEVELOPER ]
+    Website: https://oybofficial.com/
+    Builder: https://oybofficial.com/keysystem
+    YouTube: https://youtube.com/@OYBOfficial
+    Discord: https://discord.gg/kT55J724BK
+    ================================================================
+]]
 local HubName = "YourHubName"
 
 local SupportedGames = { -- put here the map id and script link, you can add more maps

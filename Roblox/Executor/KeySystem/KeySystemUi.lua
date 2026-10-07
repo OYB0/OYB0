@@ -1,17 +1,10 @@
 --[[
     ================================================================
-    [ SCRIPT INFORMATION ]
-    Project: Custom Script
-    Author: OYB
-    YouTube: https://www.youtube.com/channel/UCAlXXV1Hbvf7WbfXARuVtiQ
-    
-    [ TERMS AND CONDITIONS ]
-    - You ARE allowed to use and modify this script for your own games.
-    - You ARE NOT allowed to re-upload, redistribute, or claim 
-      ownership of this script.
-    - Removing or altering these credits is strictly prohibited.
-    
-    Copyright (c) 2026 OYB. All rights reserved.
+    [ OYB OFFICIAL | ROBLOX DEVELOPER ]
+    Website: https://oybofficial.com/
+    Builder: https://oybofficial.com/keysystem
+    YouTube: https://youtube.com/@OYBOfficial
+    Discord: https://discord.gg/kT55J724BK
     ================================================================
 ]]
 local Config = {
